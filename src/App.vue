@@ -3,10 +3,10 @@
     <header class="header" :class="{ 'scrolled': isScrolled }">
       <nav class="navbar">
         <!-- Mobile hamburger menu -->
-        <div class="mobile-nav">
-          <div class="nav-brand-mobile">
+        <div class="mobile-nav" :class="{ 'scrolled': isScrolled }">
+          <div class="nav-brand-mobile" :class="{ 'scrolled': isScrolled }">
             <router-link to="/" class="nav-link">
-              <img src="./assets/images/logo.png" class="logo-mobile">
+              <img src="./assets/images/logo.png" class="logo-mobile" :class="{ 'scrolled': isScrolled }">
             </router-link>
           </div>
           <button class="hamburger" @click="toggleMobileMenu" :class="{ 'active': isMobileMenuOpen }">
@@ -138,7 +138,7 @@ onMounted(() => {
   right: 0;
   z-index: var(--z-index-header);
   transition: var(--transition-navbar);
-  padding: var(--spacing-md) var(--spacing-xxxl);
+  padding: var(--spacing-xs) var(--spacing-xxxl);
   background-color: var(--color-background);
 }
 
@@ -184,6 +184,10 @@ onMounted(() => {
 }
 
 .header.scrolled .nav-menu {
+  margin-bottom: 0px;
+}
+
+.header.scrolled .nav-menu {
   margin-top: 0;
   gap: var(--nav-gap-scrolled);
 }
@@ -224,15 +228,25 @@ onMounted(() => {
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  transition: var(--transition-navbar);
 }
 
 .nav-brand-mobile {
   flex-shrink: 0;
+  transition: var(--transition-navbar);
 }
 
 .logo-mobile {
-  height: var(--logo-size-mobile);
-  width: var(--logo-size-mobile);
+  height: var(--logo-size-mobile-default);
+  width: var(--logo-size-mobile-default);
+  transition: var(--transition-navbar);
+  margin-top: 600px;
+}
+
+.header.scrolled .logo-mobile {
+  margin-top: 0;
+  height: var(--logo-size-mobile-scrolled);
+  width: var(--logo-size-mobile-scrolled);
 }
 
 .hamburger {
@@ -332,11 +346,44 @@ onMounted(() => {
 /* Mobile Media Queries */
 @media (max-width: 768px) {
   .header {
-    padding: var(--spacing-sm) var(--spacing-md);
+    padding: var(--spacing-md) var(--spacing-md);
   }
 
   .mobile-nav {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .mobile-nav.scrolled {
+    justify-content: space-between;
+  }
+
+  .nav-brand-mobile {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: var(--transition-navbar);
+  }
+
+  .mobile-nav.scrolled .nav-brand-mobile {
+    position: static;
+    left: auto;
+    transform: none;
+  }
+
+  .hamburger {
+    position: absolute;
+    right: 0;
+    top: 15px;
+    transition: var(--transition-navbar);
+  }
+
+  .mobile-nav.scrolled .hamburger {
+    position: absolute;
+    right: 0;
+    top: 15px;
   }
 
   .mobile-menu {
@@ -348,7 +395,12 @@ onMounted(() => {
   }
 
   .main-content {
-    margin-top: var(--margin-top-content-mobile) !important;
+    margin-top: var(--margin-top-content-mobile-default) !important;
+    transition: margin-top 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .header.scrolled + .main-content {
+    margin-top: var(--margin-top-content-mobile-scrolled) !important;
   }
 }
 

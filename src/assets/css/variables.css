@@ -36,8 +36,9 @@
 
   /* Logo Sizes */
   --logo-size-default: 350px;
-  --logo-size-scrolled: 150px;
-  --logo-size-mobile: 80px;
+  --logo-size-scrolled: 100px;
+  --logo-size-mobile-default: 200px;
+  --logo-size-mobile-scrolled: 60px;
 
   /* Layout */
   --line-height-base: 1.6;
@@ -62,8 +63,9 @@
 
   /* Margins */
   --margin-top-content-default: 800px;
-  --margin-top-content-scrolled: 700px;
-  --margin-top-content-mobile: 90px;
+  --margin-top-content-scrolled: 450px;
+  --margin-top-content-mobile-default: 500px;
+  --margin-top-content-mobile-scrolled: 400px;
 
   /* Navigation gaps */
   --nav-gap-default: 38px;
