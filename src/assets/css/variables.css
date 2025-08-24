@@ -1,0 +1,79 @@
+/* CSS Variables for JB & Sons Website */
+:root {
+  /* Colors */
+  --color-primary: #FF3F33;
+  --color-background: #ffeaea;
+  --color-primary-transparent-10: rgba(255, 63, 51, 0.1);
+  --color-primary-transparent-05: rgba(255, 63, 51, 0.05);
+
+  /* Typography */
+  --font-family-primary: 'SAA Series', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-family-heading: 'Windsor El BT', Georgia, serif;
+
+  /* Font Sizes */
+  --font-size-h1: 48px;
+  --font-size-h2: 32px;
+  --font-size-h3: 24px;
+  --font-size-nav-desktop: 36px;
+  --font-size-nav-desktop-scrolled: 30px;
+  --font-size-nav-mobile: 24px;
+  --font-size-nav-mobile-small: 20px;
+
+  /* Font Weights */
+  --font-weight-h1: 700;
+  --font-weight-h2: 600;
+  --font-weight-h3: 500;
+
+  /* Spacing */
+  --spacing-xs: 10px;
+  --spacing-sm: 15px;
+  --spacing-md: 20px;
+  --spacing-lg: 30px;
+  --spacing-xl: 38px;
+  --spacing-xxl: 60px;
+  --spacing-xxxl: 80px;
+  --spacing-huge: 100px;
+
+  /* Logo Sizes */
+  --logo-size-default: 350px;
+  --logo-size-scrolled: 150px;
+  --logo-size-mobile: 80px;
+
+  /* Layout */
+  --line-height-base: 1.6;
+  --border-radius-base: 10px;
+  --margin-bottom-heading: 1rem;
+
+  /* Transitions */
+  --transition-navbar: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: all 0.3s ease-in-out;
+  --transition-quick: all 0.3s linear;
+  --transition-hover: background-color 0.2s ease;
+
+  /* Z-index */
+  --z-index-header: 1000;
+  --z-index-hamburger: 1001;
+  --z-index-mobile-menu: 999;
+
+  /* Breakpoints (for reference in media queries) */
+  --breakpoint-mobile: 768px;
+  --breakpoint-small-mobile: 480px;
+  --breakpoint-tablet: 1200px;
+
+  /* Margins */
+  --margin-top-content-default: 800px;
+  --margin-top-content-scrolled: 700px;
+  --margin-top-content-mobile: 90px;
+
+  /* Navigation gaps */
+  --nav-gap-default: 38px;
+  --nav-gap-scrolled: 28px;
+  --nav-margin-top: 24px;
+  --nav-margin-bottom: 100px;
+
+  /* Mobile menu */
+  --mobile-menu-padding: 20px 30px;
+  --mobile-menu-padding-small: 15px 20px;
+  --hamburger-size: 30px;
+  --hamburger-bar-height: 3px;
+}

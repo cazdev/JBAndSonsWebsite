@@ -1,0 +1,61 @@
+/* Import CSS Variables */
+@import './assets/css/variables.css';
+
+@font-face {
+  font-family: 'Windsor El BT';
+  src: url('./assets/fonts/WindsorElBT.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SAA Series';
+  src: url('./assets/fonts/SAASeries.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family-primary);
+  line-height: var(--line-height-base);
+  color: var(--color-primary);
+  background-color: var(--color-background);
+  padding: var(--spacing-xxxl);
+
+  @media (max-width: 1200px) {
+    padding: var(--spacing-xxl);
+  }
+
+  @media (max-width: 768px) {
+    padding: var(--spacing-md);
+  }
+}
+
+h1 {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-h1);
+  margin-bottom: var(--margin-bottom-heading);
+  font-weight: var(--font-weight-h1);
+}
+
+h2 {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-h2);
+  margin-bottom: var(--margin-bottom-heading);
+  font-weight: var(--font-weight-h2);
+}
+
+h3 {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-h3);
+  margin-bottom: var(--margin-bottom-heading);
+  font-weight: var(--font-weight-h3);
+}
