@@ -2,8 +2,6 @@
 
 A modern business website built with Vue 3 and Vite, deployed on GitHub Pages.
 
-<!-- Deployment trigger: 2025-08-24 -->
-
 ## 🚀 Live Site
 
 Visit the live website at: [https://cazdev.github.io/JBAndSonsWebsite/](https://cazdev.github.io/JBAndSonsWebsite/)
