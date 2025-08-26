@@ -5,6 +5,8 @@
   --color-background: #ffeaea;
   --color-primary-transparent-10: rgba(255, 63, 51, 0.1);
   --color-primary-transparent-05: rgba(255, 63, 51, 0.05);
+  --color-primary-dark: color-mix(in srgb, var(--color-primary), black 40%);
+  --color-primary-light: color-mix(in srgb, var(--color-primary), white 40%);
 
   /* Typography */
   --font-family-primary: 'SAA Series', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -64,7 +66,7 @@
   /* Margins */
   --margin-top-content-default: 800px;
   --margin-top-content-scrolled: 450px;
-  --margin-top-content-mobile-default: 500px;
+  --margin-top-content-mobile-default: 600px;
   --margin-top-content-mobile-scrolled: 400px;
 
   /* Navigation gaps */
