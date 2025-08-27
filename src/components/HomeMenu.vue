@@ -23,7 +23,11 @@
     }
 
     img {
-        width: 200px;
+        width: 250px;
+    }
+
+    .image-container-right img {
+        transform: scaleX(-1);
     }
 
     .call-to-action {

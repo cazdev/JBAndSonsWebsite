@@ -97,7 +97,7 @@ npm run deploy
 ## 🔧 Configuration
 
 The project is configured for GitHub Pages deployment with:
-- Base path set to `/`
+- Base path set to `/JBAndSonsWebsite/`
 - Vue Router configured for the correct base URL
 - GitHub Actions workflow for automatic deployment
 
