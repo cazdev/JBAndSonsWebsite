@@ -39,6 +39,9 @@ export default defineConfig({
           if (/\.(woff2?|eot|ttf|otf)$/i.test(assetInfo.name)) {
             return `fonts/[name]-[hash][extname]`
           }
+          if (/\.(mp4|webm|ogg|avi|mov)$/i.test(assetInfo.name)) {
+            return `videos/[name]-[hash][extname]`
+          }
           return `assets/[name]-[hash][extname]`
         }
       }

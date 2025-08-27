@@ -10,7 +10,7 @@
         class="beer-pour-video"
         preload="none"
       >
-        <source data-src="/src/assets/videos/BeerPour.webm" type="video/webm">
+        <source :data-src="beerPourVideo" type="video/webm">
       </video>
     </div>
     <div class="whats-on-text">
@@ -30,6 +30,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useLazyLoading } from '../composables/useLazyLoading.js'
+import beerPourVideo from '../assets/videos/BeerPour.webm'
 
 const videoRef = ref(null)
 const { lazyLoadVideo } = useLazyLoading()
