@@ -5,7 +5,15 @@
       <div class="mobile-nav" :class="{ 'scrolled': isScrolled }">
         <div class="nav-brand-mobile" :class="{ 'scrolled': isScrolled }">
           <a href="#" class="nav-link" @click.prevent="handleNavigation('/')">
-            <img src="../assets/images/logo.png" class="logo-mobile" :class="{ 'scrolled': isScrolled }">
+            <picture>
+              <source srcset="../assets/images/logo.webp" type="image/webp">
+              <img src="../assets/images/logo.png"
+                   class="logo-mobile"
+                   :class="{ 'scrolled': isScrolled }"
+                   width="150"
+                   height="142"
+                   alt="JB & Sons Logo">
+            </picture>
           </a>
         </div>
         <button class="hamburger" @click="toggleMobileMenu" :class="{ 'active': isMobileMenuOpen }">
@@ -44,7 +52,15 @@
       <div class="desktop-nav">
         <div class="nav-brand" :class="{ 'scrolled': isScrolled }">
           <a href="#" class="nav-link" @click.prevent="handleNavigation('/')">
-            <img src="../assets/images/logo.png" class="logo" :class="{ 'scrolled': isScrolled }">
+            <picture>
+              <source srcset="../assets/images/logo.webp" type="image/webp">
+              <img src="../assets/images/logo.png"
+                   class="logo"
+                   :class="{ 'scrolled': isScrolled }"
+                   width="150"
+                   height="142"
+                   alt="JB & Sons Logo">
+            </picture>
           </a>
         </div>
         <div class="nav-menu" :class="{ 'scrolled': isScrolled }">

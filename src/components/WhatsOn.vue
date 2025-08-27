@@ -3,13 +3,14 @@
     <div class="video-container">
       <h1 class="whats-on-title">WHAT'S <br/> ON</h1>
       <video
-        autoplay
+        ref="videoRef"
         loop
         muted
         playsinline
         class="beer-pour-video"
+        preload="none"
       >
-        <source src="/src/assets/videos/BeerPour.webm" type="video/webm">
+        <source data-src="/src/assets/videos/BeerPour.webm" type="video/webm">
       </video>
     </div>
     <div class="whats-on-text">
@@ -27,6 +28,46 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue'
+import { useLazyLoading } from '../composables/useLazyLoading.js'
+
+const videoRef = ref(null)
+const { lazyLoadVideo } = useLazyLoading()
+
+onMounted(() => {
+  if (videoRef.value) {
+    // Set up lazy loading for the video
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const video = entry.target
+          const source = video.querySelector('source[data-src]')
+
+          if (source && source.dataset.src) {
+            // Load the video source
+            source.src = source.dataset.src
+            source.removeAttribute('data-src')
+            video.load()
+
+            // Start playing the video
+            video.play().catch(e => {
+              console.log('Video autoplay failed:', e)
+            })
+          }
+
+          // Stop observing once loaded
+          observer.unobserve(video)
+        }
+      })
+    }, {
+      root: null,
+      rootMargin: '50px',
+      threshold: 0.1
+    })
+
+    observer.observe(videoRef.value)
+  }
+})
 </script>
 
 <style scoped>

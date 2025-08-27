@@ -60,6 +60,10 @@ h3 {
   font-weight: var(--font-weight-h3);
 }
 
+img {
+  border-radius: 8px;
+}
+
 button {
   background: var(--color-primary);
   border: none;

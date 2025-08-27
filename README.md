@@ -103,4 +103,4 @@ The project is configured for GitHub Pages deployment with:
 
 ## 📝 License
 
-ISC License
+See [text](LICENSE.md)

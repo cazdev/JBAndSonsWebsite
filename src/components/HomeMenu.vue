@@ -1,9 +1,27 @@
 <template>
     <div id="menu">
-        <img class="image-container-left" src="../assets/images/ben-ross-standing-drink.png"></img>
+        <picture class="image-container-left">
+            <source media="(max-width: 768px)" srcset="../assets/images/ben-ross-standing-drink-140w.webp" type="image/webp">
+            <source media="(min-width: 769px)" srcset="../assets/images/ben-ross-standing-drink-250w.webp" type="image/webp">
+            <source media="(max-width: 768px)" srcset="../assets/images/ben-ross-standing-drink.png">
+            <img src="../assets/images/ben-ross-standing-drink.png"
+                 width="250"
+                 height="324"
+                 loading="lazy"
+                 alt="Ben Ross standing with drink">
+        </picture>
         <h1 class="menu-title-text">M<br/>E<br/>N<br/>U</h1>
         <div class="image-container-right">
-            <img src="../assets/images/ben-ross-standing-burger.png"></img>
+            <picture>
+                <source media="(max-width: 768px)" srcset="../assets/images/ben-ross-standing-burger-140w.webp" type="image/webp">
+                <source media="(min-width: 769px)" srcset="../assets/images/ben-ross-standing-burger-250w.webp" type="image/webp">
+                <source media="(max-width: 768px)" srcset="../assets/images/ben-ross-standing-burger.png">
+                <img src="../assets/images/ben-ross-standing-burger.png"
+                     width="250"
+                     height="324"
+                     loading="lazy"
+                     alt="Ben Ross standing with burger">
+            </picture>
             <button class="call-to-action">VIEW MENU</button>
         </div>
     </div>
