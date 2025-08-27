@@ -7,7 +7,10 @@ export default defineConfig({
   base: '/JBAndSonsWebsite/',
   server: {
     port: 3000,
-    open: true
+    open: true,
+    headers: {
+      'Cache-Control': 'no-cache'
+    }
   },
   build: {
     outDir: 'dist',

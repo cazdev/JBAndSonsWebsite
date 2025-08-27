@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JB & Sons</title>
     <!-- Preload critical resources for LCP -->
-    <link rel="preload" as="image" href="./src/assets/images/logo.webp" type="image/webp">
-    <link rel="preload" as="image" href="./src/assets/images/logo.png" type="image/png">
+    <link rel="preload" as="image" href="./src/assets/images/logo-400w.webp" type="image/webp" fetchpriority="high">
+    <link rel="preload" as="image" href="./src/assets/images/logo-400w.png" type="image/png" fetchpriority="high">
+    <!-- Preload critical CSS -->
+    <link rel="preload" as="style" href="./src/style.css">
+    <link rel="preload" as="style" href="./src/assets/css/variables.css">
   </head>
   <body>
     <div id="app"></div>

@@ -7,16 +7,23 @@
           <a href="#" class="nav-link" @click.prevent="handleNavigation('/')">
             <picture>
               <source srcset="../assets/images/logo.webp" type="image/webp">
-              <img src="../assets/images/logo.png"
+              <source media="(max-width: 480px)" srcset="../assets/images/logo-100w.png">
+              <source media="(max-width: 768px)" srcset="../assets/images/logo-200w.png">
+              <img src="../assets/images/logo-400w.png"
                    class="logo-mobile"
                    :class="{ 'scrolled': isScrolled }"
                    width="150"
                    height="142"
+                   fetchpriority="high"
                    alt="JB & Sons Logo">
             </picture>
           </a>
         </div>
-        <button class="hamburger" @click="toggleMobileMenu" :class="{ 'active': isMobileMenuOpen }">
+        <button class="hamburger"
+                @click="toggleMobileMenu"
+                :class="{ 'active': isMobileMenuOpen }"
+                :aria-label="isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'"
+                :aria-expanded="isMobileMenuOpen">
           <span></span>
           <span></span>
           <span></span>
@@ -54,11 +61,14 @@
           <a href="#" class="nav-link" @click.prevent="handleNavigation('/')">
             <picture>
               <source srcset="../assets/images/logo.webp" type="image/webp">
-              <img src="../assets/images/logo.png"
+              <source media="(max-width: 768px)" srcset="../assets/images/logo-200w.png">
+              <source media="(max-width: 1200px)" srcset="../assets/images/logo-400w.png">
+              <img src="../assets/images/logo-400w.png"
                    class="logo"
                    :class="{ 'scrolled': isScrolled }"
                    width="150"
                    height="142"
+                   fetchpriority="high"
                    alt="JB & Sons Logo">
             </picture>
           </a>

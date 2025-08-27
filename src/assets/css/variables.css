@@ -5,8 +5,10 @@
   --color-background: #ffeaea;
   --color-primary-transparent-10: rgba(255, 63, 51, 0.1);
   --color-primary-transparent-05: rgba(255, 63, 51, 0.05);
-  --color-primary-dark: color-mix(in srgb, var(--color-primary), black 40%);
-  --color-primary-light: color-mix(in srgb, var(--color-primary), white 40%);
+  --color-primary-dark: #cc1f15;
+  --color-primary-light: #ff7066;
+  --color-text-high-contrast: #1a1a1a;
+  --color-button-text: #ffffff;
 
   /* Typography */
   --font-family-primary: 'SAA Series', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
