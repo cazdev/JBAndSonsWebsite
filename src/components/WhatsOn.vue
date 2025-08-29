@@ -76,7 +76,7 @@ onMounted(() => {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  margin-bottom: 150px;
   gap: 64px;
   padding: 20px;
 }
@@ -91,7 +91,6 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 18px;
   font-weight: bold;
   text-align: center;
   gap: 32px;
@@ -103,7 +102,7 @@ onMounted(() => {
   position: absolute;
   text-align: center;
   font-weight: 200;
-  top: -48px;
+  top: -64px;
   right: -128px;
   font-size: 86px;
   line-height: 86px;
@@ -113,7 +112,7 @@ onMounted(() => {
 
 .beer-pour-video {
   height: 450px;
-  border-radius: 8px;
+  border-radius: var(--border-radius-base);
 }
 
 /* Mobile Responsive Styles */

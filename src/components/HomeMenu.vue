@@ -1,9 +1,10 @@
 <template>
     <div id="menu">
         <picture class="image-container-left">
-            <source media="(max-width: 768px)" srcset="../assets/images/ben-ross-standing-drink-140w.webp" type="image/webp">
+            <source media="(max-width: 768px)" srcset="../assets/images/ben-ross-standing-drink-250w.webp" type="image/webp">
             <source media="(min-width: 769px)" srcset="../assets/images/ben-ross-standing-drink-250w.webp" type="image/webp">
             <source media="(max-width: 768px)" srcset="../assets/images/ben-ross-standing-drink.png">
+            <source media="(min-width: 769px)" srcset="../assets/images/ben-ross-standing-drink.png">
             <img src="../assets/images/ben-ross-standing-drink.png"
                  width="250"
                  height="324"
@@ -13,9 +14,10 @@
         <h1 class="menu-title-text">M<br/>E<br/>N<br/>U</h1>
         <div class="image-container-right">
             <picture>
-                <source media="(max-width: 768px)" srcset="../assets/images/ben-ross-standing-burger-140w.webp" type="image/webp">
+                <source media="(max-width: 768px)" srcset="../assets/images/ben-ross-standing-burger-250w.webp" type="image/webp">
                 <source media="(min-width: 769px)" srcset="../assets/images/ben-ross-standing-burger-250w.webp" type="image/webp">
                 <source media="(max-width: 768px)" srcset="../assets/images/ben-ross-standing-burger.png">
+                <source media="(min-width: 769px)" srcset="../assets/images/ben-ross-standing-burger.png">
                 <img src="../assets/images/ben-ross-standing-burger.png"
                      width="250"
                      height="324"
@@ -35,13 +37,15 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        min-height: 100vh;
+        margin-bottom: 150px;
         gap: 16px;
         padding: 20px;
     }
 
     img {
         width: 250px;
+        height: auto;
+        object-fit: contain;
     }
 
     .image-container-right img {
@@ -52,7 +56,6 @@
         width: 120px;
         margin-left: auto;
         margin-right: auto;
-        font-weight: 500;
     }
 
     .menu-title-text {
@@ -74,6 +77,7 @@
     @media (max-width: 768px) {
         img {
             width: 140px;
+            height: auto;
         }
 
         .call-to-action {

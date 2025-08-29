@@ -44,6 +44,19 @@
   --logo-size-mobile-default: 200px;
   --logo-size-mobile-scrolled: 60px;
 
+  /* Header Heights - Fixed for consistent DOM */
+  --header-height-fixed: 50vh;
+  --header-height-mobile-fixed: 300px;
+
+  /* Header Visual Heights - What users actually see */
+  --header-visual-height-default: 450px;
+  --header-visual-height-scrolled: 120px;
+  --header-visual-height-mobile-default: 250px;
+  --header-visual-height-mobile-scrolled: 80px;
+
+  /* Mobile logo animation offset */
+  --mobile-logo-offset-default: 100px;
+
   /* Layout */
   --line-height-base: 1.6;
   --border-radius-base: 10px;

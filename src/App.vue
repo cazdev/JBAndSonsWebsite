@@ -37,12 +37,9 @@ onMounted(() => {
 
 <style scoped>
 .main-content {
-  margin-top: var(--margin-top-content-default); /* Account for the initial header height */
-  transition: margin-top 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-:deep(.header.scrolled) + .main-content {
-  margin-top: var(--margin-top-content-scrolled); /* Reduced margin when scrolled */
+  /* Fixed margin-top that matches the fixed header height */
+  margin-top: var(--header-height-fixed);
+  /* No transition needed since header height never changes */
 }
 
 /* Add some content height to enable scrolling for testing */
@@ -53,12 +50,8 @@ onMounted(() => {
 /* Mobile Media Queries */
 @media (max-width: 768px) {
   .main-content {
-    margin-top: var(--margin-top-content-mobile-default) !important;
-    transition: margin-top 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  :deep(.header.scrolled) + .main-content {
-    margin-top: var(--margin-top-content-mobile-scrolled) !important;
+    /* Fixed margin-top for mobile that matches the fixed mobile header height */
+    margin-top: var(--header-height-mobile-fixed);
   }
 }
 </style>

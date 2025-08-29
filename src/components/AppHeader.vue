@@ -1,4 +1,7 @@
 <template>
+  <!-- Phantom spacer that maintains consistent DOM height -->
+  <div class="header-spacer"></div>
+
   <header class="header" :class="{ 'scrolled': isScrolled }">
     <nav class="navbar">
       <!-- Mobile hamburger menu -->
@@ -33,64 +36,70 @@
       <!-- Mobile menu dropdown -->
       <div class="mobile-menu" :class="{ 'open': isMobileMenuOpen }">
         <div class="mobile-nav-item">
-          <a href="#" class="mobile-nav-link" @click.prevent="handleNavigation('/')">Home</a>
+          <a href="/" class="mobile-nav-link" @click="closeMobileMenu">Home</a>
         </div>
         <div class="mobile-nav-item">
-          <a href="#" class="mobile-nav-link" @click.prevent="handleNavigation('/bookings')">Bookings</a>
+          <a href="/bookings" class="mobile-nav-link" @click="closeMobileMenu">Bookings</a>
         </div>
         <div class="mobile-nav-item">
-          <a href="#" class="mobile-nav-link" @click.prevent="handleNavigation('/menu')">Menu</a>
+          <a href="#menu" class="mobile-nav-link" @click.prevent="handleAnchorNavigation('menu')">Menu</a>
         </div>
         <div class="mobile-nav-item">
-          <a href="#" class="mobile-nav-link" @click.prevent="handleNavigation('/whatson')">Whats On</a>
+          <a href="#whats-on" class="mobile-nav-link" @click.prevent="handleAnchorNavigation('whats-on')">Whats On</a>
         </div>
         <div class="mobile-nav-item">
-          <a href="#" class="mobile-nav-link" @click.prevent="handleNavigation('/vouchers')">Vouchers</a>
+          <a href="/vouchers" class="mobile-nav-link" @click="closeMobileMenu">Vouchers</a>
         </div>
         <div class="mobile-nav-item">
-          <a href="#" class="mobile-nav-link" @click.prevent="handleNavigation('/about')">About Us</a>
+          <a href="/about" class="mobile-nav-link" @click="closeMobileMenu">About</a>
         </div>
         <div class="mobile-nav-item">
-          <a href="#" class="mobile-nav-link" @click.prevent="handleNavigation('/contact')">Contact Us</a>
+          <a href="/contact" class="mobile-nav-link" @click="closeMobileMenu">Contact</a>
         </div>
       </div>
 
-      <!-- Desktop navigation (existing) -->
+      <!-- Desktop navigation -->
       <div class="desktop-nav">
-        <div class="nav-brand" :class="{ 'scrolled': isScrolled }">
-          <a href="#" class="nav-link" @click.prevent="handleNavigation('/')">
-            <picture>
-              <source srcset="../assets/images/logo.webp" type="image/webp">
-              <source media="(max-width: 768px)" srcset="../assets/images/logo-200w.png">
-              <source media="(max-width: 1200px)" srcset="../assets/images/logo-400w.png">
-              <img src="../assets/images/logo-400w.png"
-                   class="logo"
-                   :class="{ 'scrolled': isScrolled }"
-                   width="150"
-                   height="142"
-                   fetchpriority="high"
-                   alt="JB & Sons Logo">
-            </picture>
-          </a>
-        </div>
-        <div class="nav-menu" :class="{ 'scrolled': isScrolled }">
-          <div class="nav-item">
-            <a href="#" class="nav-link" @click.prevent="handleNavigation('/bookings')">Bookings</a>
+        <!-- Header container with fixed height -->
+        <div class="header-container">
+          <!-- Logo container with consistent positioning -->
+          <div class="nav-brand" :class="{ 'scrolled': isScrolled }">
+            <a href="#" class="nav-link" @click.prevent="handleNavigation('/')">
+              <picture>
+                <source srcset="../assets/images/logo.webp" type="image/webp">
+                <source media="(max-width: 768px)" srcset="../assets/images/logo-200w.png">
+                <source media="(max-width: 1200px)" srcset="../assets/images/logo-400w.png">
+                <img src="../assets/images/logo-400w.png"
+                     class="logo"
+                     :class="{ 'scrolled': isScrolled }"
+                     width="150"
+                     height="142"
+                     fetchpriority="high"
+                     alt="JB & Sons Logo">
+              </picture>
+            </a>
           </div>
-          <div class="nav-item">
-            <a href="#" class="nav-link" @click.prevent="handleNavigation('/menu')">Menu</a>
-          </div>
-          <div class="nav-item">
-            <a href="#" class="nav-link" @click.prevent="handleNavigation('/whatson')">Whats On</a>
-          </div>
-          <div class="nav-item">
-            <a href="#" class="nav-link" @click.prevent="handleNavigation('/vouchers')">Vouchers</a>
-          </div>
-          <div class="nav-item">
-            <a href="#" class="nav-link" @click.prevent="handleNavigation('/about')">About Us</a>
-          </div>
-          <div class="nav-item">
-            <a href="#" class="nav-link" @click.prevent="handleNavigation('/contact')">Contact Us</a>
+
+          <!-- Navigation menu with consistent positioning -->
+          <div class="nav-menu" :class="{ 'scrolled': isScrolled }">
+            <div class="nav-item">
+              <a href="/bookings" class="nav-link">Bookings</a>
+            </div>
+            <div class="nav-item">
+              <a href="#menu" class="nav-link" @click.prevent="handleAnchorNavigation('menu')">Menu</a>
+            </div>
+            <div class="nav-item">
+              <a href="#whats-on" class="nav-link" @click.prevent="handleAnchorNavigation('whats-on')">Whats On</a>
+            </div>
+            <div class="nav-item">
+              <a href="/vouchers" class="nav-link">Vouchers</a>
+            </div>
+            <div class="nav-item">
+              <a href="/about" class="nav-link">About</a>
+            </div>
+            <div class="nav-item">
+              <a href="/contact" class="nav-link">Contact</a>
+            </div>
           </div>
         </div>
       </div>
@@ -119,6 +128,23 @@ const handleNavigation = (path) => {
   closeMobileMenu()
 }
 
+
+const handleAnchorNavigation = (sectionId) => {
+  // Check if we're on the home page
+  if (navigation.currentPath.value === '/') {
+    // Already on home page, just scroll to section
+    navigation.navigateToSection(sectionId)
+  } else {
+    // Navigate to home page first, then scroll to section
+    navigation.navigateTo('/').then(() => {
+      setTimeout(() => {
+        navigation.navigateToSection(sectionId)
+      }, 100)
+    })
+  }
+  closeMobileMenu()
+}
+
 const setupScrollListener = () => {
   const handleScroll = () => {
     const scrollThreshold = 100 // Adjust this value to control when the animation triggers
@@ -139,37 +165,68 @@ onMounted(() => {
 </script>
 
 <style scoped>
+/* Phantom spacer - invisible element that maintains consistent DOM height */
+.header-spacer {
+  height: var(--header-height-fixed);
+  width: 100%;
+  /* Invisible but takes up space in the DOM */
+  visibility: hidden;
+  pointer-events: none;
+}
+
 .header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: var(--z-index-header);
-  transition: var(--transition-navbar);
   padding: var(--spacing-xs) var(--spacing-xxxl);
   background-color: var(--color-background);
+  /* Dynamic height that changes with scroll state */
+  height: var(--header-visual-height-default);
+  transition: var(--transition-navbar);
+}
+
+.header.scrolled {
+  height: var(--header-visual-height-scrolled);
 }
 
 .navbar {
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column-reverse;
-  transition: var(--transition-navbar);
 }
 
-.header.scrolled .navbar {
-  flex-direction: row;
-  justify-content: space-between;
+/* Desktop Navigation Container */
+.desktop-nav {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.header-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 
+/* Logo positioning using absolute positioning within the fixed container */
 .nav-brand {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   transition: var(--transition-navbar);
+  z-index: 2;
 }
 
 .header.scrolled .nav-brand {
-  margin-bottom: 0;
+  left: 0;
+  transform: translate(0, -50%);
 }
 
 .logo {
@@ -183,20 +240,23 @@ onMounted(() => {
   width: var(--logo-size-scrolled);
 }
 
+/* Navigation menu positioning */
 .nav-menu {
+  position: absolute;
+  left: 50%;
+  top: calc(50vh + 100px);
+  transform: translateX(-50%);
   display: flex;
-  margin-top: var(--nav-margin-top);
   gap: var(--nav-gap-default);
   transition: var(--transition-navbar);
-  margin-bottom: var(--nav-margin-bottom);
+  opacity: 1;
 }
 
 .header.scrolled .nav-menu {
-  margin-bottom: 0px;
-}
-
-.header.scrolled .nav-menu {
-  margin-top: 0;
+  top: 50%;
+  left: auto;
+  right: 0;
+  transform: translateY(-50%);
   gap: var(--nav-gap-scrolled);
 }
 
@@ -222,6 +282,7 @@ onMounted(() => {
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  height: 100%;
   transition: var(--transition-navbar);
 }
 
@@ -234,11 +295,10 @@ onMounted(() => {
   height: var(--logo-size-mobile-default);
   width: var(--logo-size-mobile-default);
   transition: var(--transition-navbar);
-  margin-top: 600px;
+  /* Remove the transform offset to prevent teleporting */
 }
 
 .header.scrolled .logo-mobile {
-  margin-top: 0;
   height: var(--logo-size-mobile-scrolled);
   width: var(--logo-size-mobile-scrolled);
 }
@@ -281,16 +341,17 @@ onMounted(() => {
 
 .mobile-menu {
   display: none;
-  position: absolute;
-  top: 100%;
+  position: fixed;
+  top: 0;
   left: 0;
   right: 0;
   background-color: var(--color-background);
   box-shadow: 0 2px 10px var(--color-primary-transparent-10);
-  transform: translateY(calc(-100% - 100px));
+  transform: translateY(-100%);
   opacity: 0;
   transition: var(--transition-fast);
   z-index: var(--z-index-mobile-menu);
+  padding-top: calc(var(--spacing-md) * 2 + var(--hamburger-size));
 }
 
 .mobile-menu.open {
@@ -321,25 +382,21 @@ onMounted(() => {
   border-bottom: none;
 }
 
-.desktop-nav {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column-reverse;
-  transition: var(--transition-navbar);
-}
-
-.header.scrolled .desktop-nav {
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-
 /* Mobile Media Queries */
 @media (max-width: 768px) {
+  .header-spacer {
+    height: var(--header-height-mobile-fixed);
+  }
+
   .header {
     padding: var(--spacing-md) var(--spacing-md);
+    /* Dynamic visual height for mobile */
+    height: var(--header-visual-height-mobile-default);
+    transition: var(--transition-navbar);
+  }
+
+  .header.scrolled {
+    height: var(--header-visual-height-mobile-scrolled);
   }
 
   .mobile-nav {
@@ -347,6 +404,7 @@ onMounted(() => {
     justify-content: center;
     align-items: center;
     position: relative;
+    height: 100%;
   }
 
   .mobile-nav.scrolled {
@@ -354,29 +412,34 @@ onMounted(() => {
   }
 
   .nav-brand-mobile {
-    position: absolute;
+    position: fixed;
     left: 50%;
-    transform: translateX(-50%);
+    top: 50%;
+    transform: translate(-50%, -50%);
     transition: var(--transition-navbar);
+    z-index: 2;
   }
 
-  .mobile-nav.scrolled .nav-brand-mobile {
-    position: static;
-    left: auto;
-    transform: none;
+  .header.scrolled .nav-brand-mobile {
+    left: var(--spacing-md);
+    top: var(--spacing-md);
+    transform: translate(0, 0);
   }
 
   .hamburger {
-    position: absolute;
-    right: 0;
-    top: 15px;
+    position: fixed;
+    right: var(--spacing-md);
+    top: var(--spacing-md);
+    transform: none;
     transition: var(--transition-navbar);
+    z-index: var(--z-index-hamburger);
   }
 
   .mobile-nav.scrolled .hamburger {
-    position: absolute;
-    right: 0;
-    top: 15px;
+    position: fixed;
+    right: var(--spacing-md);
+    top: var(--spacing-md);
+    transform: none;
   }
 
   .mobile-menu {

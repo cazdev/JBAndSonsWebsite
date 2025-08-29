@@ -10,6 +10,8 @@
     "deploy": "npm run build && gh-pages -d dist"
   },
   "dependencies": {
+    "@heroicons/vue": "^2.2.0",
+    "lucide-vue-next": "^0.542.0",
     "vue": "^3.3.0",
     "vue-router": "^4.2.0"
   },
